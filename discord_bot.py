@@ -23,7 +23,7 @@ model = AutoModelForCausalLM.from_pretrained("/")#モデルの入っているデ
 #漢字の正規表現
 chinese_chr = re.compile('[\u2E80-\u2FDF\u3005-\u3007\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF\U00020000-\U0002EBEF]+')
 
-#安倍晋三の発言生成用関数
+#発言生成用関数
 def generate_talk(othersay: str, num=1) -> None:
     
     #入力テキストをトークン化
@@ -94,7 +94,7 @@ async def on_message(message):
         firstname=[]
         output=generate_talk(input)
 
-        #メッセージ内の名前部を変換
+        #メッセージ内の名前部を変換（この部分は私のモデルにおける変換手法なので別のモデルを使用する際には削除してください。）
 
         #メッセージ内に名前が出てこないとき
         if re.search(r'委員|議員|さん',output ) == None:
